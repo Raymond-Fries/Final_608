@@ -1,0 +1,35 @@
+body{
+  background-color: #011940;
+}
+html {
+  background-color: #011940;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+#nav_content_container {
+  background-color: #011940;
+  color: #a9aaab;
+}
+#navbarSupportedContent{
+  background-color: #011940;
+  color: #a9aaab;
+}
+.navbar-brand{
+  font-family: cursive;
+  color: #a9aaab;
+}
+
+.nav-link {
+  color: #a9aaab;
+}
+.nav-link:hover {
+  color: white;
+}
+
+.nav-item {
+    padding-top: 16px;
+}
+#nav_content_links {
+  float: right;
+}
