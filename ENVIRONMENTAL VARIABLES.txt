@@ -1,5 +1,5 @@
-AL_AK=PKSF2LKL58BHVSSVDXDO
-AL_SK=c7Eneszq4lhpzj9uJm8yeaKSNn32A2e5tgjhZzPR
+AL_AK=alpaca_key
+AL_SK=alpaca_secret_key
 RT_DATABASE_HOST=localhost
 RT_DATABASE_NAME=postgres
 RT_DATABASE_USER=postgres
