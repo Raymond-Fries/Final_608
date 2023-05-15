@@ -1,0 +1,160 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block content%}
+<link rel="stylesheet" href="{% static 'real_time/css/real_time_page.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script>
+
+<!-- Real time company dropdown -->
+<div class="row">
+  <div class="container" id="rt_nav">
+    <div class="row justify-content-end">
+      <!--Profit Table -->
+      <div class="col">
+        <h3>Profit/Loss</h3>
+        <div class="col-8">
+          <div class="profits">
+              <table class="profitsTable">
+                <thead class="profitsTableHead">
+                  <tr>
+                    <th>Cash</th>
+                    <th>Buy Power</th>
+                    <th>Today's Profit/Loss</th>
+                  </tr>
+                </thead>
+                <tbody class='profitsTableBody'>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-4" id='dd_list'>
+        {% include 'partials/dropping.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Graph -->
+<div class="row">
+  <div class="container">
+    <div class="col-8">
+      <div class="col">
+        <canvas id="company_Chart" ></canvas>
+        {{ chartData | json_script:"chart_data" }}
+        <script src="{% static 'real_time/real_time_chart.js' %}"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tables -->
+<!-- Main Table Headings -->
+<div class="row" id='main_table_row'>
+  <div class="col-6" id="pos_half">
+    <div class="row" id="pos_main_heading_row">
+      <div class="col-12" id='pos_title'>
+        <p>Positions</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="positions" id='positions'>
+            <table class="positionsTable" >
+              <thead class='positionsTableHead'>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Side</th>
+                  <th>Quantity</th>
+                  <th>Avg Price</th>
+                  <th>Cost</th>
+                </tr>
+              </thead>
+              <tbody class='positionsTableBody' id='positionsTableBody'>
+                  {% for p in positions %}
+                    <tr>
+                      <td>{{ p.symbol_id }}</td>
+                      <td>{{ p.side }}</td>
+                      <td>{{ p.pos_quantity }}</td>
+                      <td>{{ p.average_price | floatformat:3 }}</td>
+                      <td>{{ p.cost | floatformat:3 }}</td>
+                    </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6" id="trans_half">
+    <div class="row" id='transactions_main_header'>
+      <div class="col-4" id='transactions_title'>
+        <p>Transactions</p>
+      </div>
+      <div class="col-8" id='transactions_count'>
+        <div class="row">
+          <div class="col-7">
+            <span>Transactions Count: </span>
+          </div>
+          <div class="col-5">
+            <span id="t_counts"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="transactions">
+          <table class="transactionsTable" id="transactionsTable">
+              <thead class="transactionsTableHead">
+                <tr>
+                  <th>Symbol</th>
+                  <th>Time</th>
+                  <th>Side</th>
+                  <th>Qty Bought</th>
+                  <th>Avg Price</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody class='transactionsTableBody' id='transactionsTableBody'>
+                {% for t in transactions %}
+                <tr>
+                  <td>{{ t.symbol_id }}</td>
+                  <td>{{ t.timestamp | time:'H:i:s' }}</td>
+                  <td>{{ t.side }}</td>
+                  <td>{{ t.quantity }}</td>
+                  <td>{{ t.price }}</td>
+                  <td>{{ t.position_quantity }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+</script>
+<script>
+  $(document).ready(function(){
+    $('#transactionsTable').dataTable({
+        pagelength: 10,
+        paging:true,
+        searching: false,
+        ordering: false,
+        info: false,
+    });
+});
+</script>
+<script src="{% static 'real_time/real_time_stock.js' %}"></script>
+{% endblock %}

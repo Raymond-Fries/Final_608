@@ -1,0 +1,5 @@
+<form action="{% url 'real_time:real_time_page' %}" method="POST" nonvalidate>
+    {% csrf_token %}
+    {{ form.as_table }}
+  <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,86 @@
+body {
+  background-color: #011940;
+  color: #a9aaab;
+}
+#rt_nav {
+  background-color: #011940;
+}
+
+#pos_title{
+  font-size: 25px;
+}
+
+#transactions_title{
+  font-size: 25px;
+}
+#transactions_count{
+  font-size: 25px;
+}
+#t_counts{
+  font-size: 20px;
+}
+.positionsTable{
+  width: 100%;
+  text-align: left;
+  color: #a9aaab;
+  table-layout: fixed;
+}
+
+.positionsTableHead tr th{
+  border-left: 1px solid #a9aaab;
+  border-right: 1px solid #a9aaab;
+  border-width: 1px;
+  height: auto;
+}
+.positionsTableBody tr td{
+  border-left: 1px solid #a9aaab;
+  border-right: 1px solid #a9aaab;
+  border-width: 1px;
+  height: auto;
+}
+
+.profitsTable{
+  padding:20px;
+  margin: 15px;
+  width: 100%;
+  text-align: left;
+  color: #a9aaab;
+  border: 1px solid;
+}
+.profitsTableHead tr th {
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  width:75px;
+  height: 40px;
+  border: 1px solid #a9aaab;
+}
+.profitsTableBody tr td{
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 1px solid #a9aaab;
+  height:40px;
+  width:75px;
+}
+
+.transactionsTable{
+  width: 100%;
+  text-align: left;
+  color: #a9aaab;
+  table-layout: fixed;
+}
+.transactionsTableHead tr th {
+  border-left: 1px solid #a9aaab;
+  border-right: 1px solid #a9aaab;
+  border-width: 1px;
+  height:auto;
+}
+.transactionsTableBody tr td {
+  border-left: 1px solid #a9aaab;
+  border-right: 1px solid #a9aaab;
+  border-width: 1px;
+  height: auto;
+}
